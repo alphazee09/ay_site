@@ -1,10 +1,11 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useLocation } from "wouter";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import ParticleSystem from "@/components/ui/particle-system";
 import { 
   ArrowLeft, 
   Send, 
@@ -16,7 +17,10 @@ import {
   Sparkles,
   CheckCircle,
   Clock,
-  Star
+  Star,
+  Zap,
+  Rocket,
+  Trophy
 } from "lucide-react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -49,6 +53,7 @@ export default function ServiceRequest() {
   const [, setLocation] = useLocation();
   const [selectedService, setSelectedService] = useState<string>("");
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [showConfetti, setShowConfetti] = useState(false);
   const { toast } = useToast();
 
   const { register, handleSubmit, formState: { errors }, setValue, watch } = useForm<ServiceRequestForm>({
@@ -66,11 +71,14 @@ export default function ServiceRequest() {
       });
     },
     onSuccess: () => {
-      setIsSubmitted(true);
-      toast({
-        title: "Request Submitted!",
-        description: "We'll get back to you within 24 hours."
-      });
+      setShowConfetti(true);
+      setTimeout(() => {
+        setIsSubmitted(true);
+        toast({
+          title: "Request Submitted!",
+          description: "We'll get back to you within 24 hours."
+        });
+      }, 1000);
     },
     onError: () => {
       toast({
@@ -89,32 +97,40 @@ export default function ServiceRequest() {
 
   if (isSubmitted) {
     return (
-      <div className="min-h-screen bg-gradient-to-b from-ay-black to-gray-900 flex items-center justify-center p-6">
-        <Card className="max-w-2xl w-full p-12 text-center glass-morphism animate-on-load">
+      <div className="min-h-screen bg-gradient-to-b from-ay-black to-gray-900 flex items-center justify-center p-6 relative overflow-hidden">
+        <ParticleSystem />
+        
+        <Card className="max-w-2xl w-full p-12 text-center glass-morphism animate-on-load relative z-10">
           <div className="mb-8">
-            <CheckCircle className="h-20 w-20 text-ay-gold mx-auto mb-6 animate-pulse" />
-            <h1 className="text-4xl font-orbitron font-bold text-ay-gold mb-4">
+            <div className="relative">
+              <CheckCircle className="h-20 w-20 text-ay-gold mx-auto mb-6 animate-bounce" />
+              <div className="absolute inset-0 flex items-center justify-center">
+                <div className="w-32 h-32 border-4 border-ay-gold rounded-full animate-ping opacity-30" />
+              </div>
+            </div>
+            
+            <h1 className="text-4xl font-orbitron font-bold text-ay-gold mb-4 animate-glow">
               REQUEST SUBMITTED
             </h1>
-            <p className="text-xl text-ay-gray font-orbitron">
+            <p className="text-xl text-ay-gray font-orbitron animate-on-load">
               Your service request has been successfully submitted!
             </p>
           </div>
           
           <div className="space-y-4 mb-8">
-            <div className="flex items-center justify-center space-x-2">
-              <Clock className="h-5 w-5 text-ay-silver" />
+            <div className="flex items-center justify-center space-x-2 animate-on-load">
+              <Clock className="h-5 w-5 text-ay-silver animate-pulse" />
               <span className="text-ay-silver font-orbitron">Response time: 24 hours</span>
             </div>
-            <div className="flex items-center justify-center space-x-2">
-              <Star className="h-5 w-5 text-ay-gold" />
+            <div className="flex items-center justify-center space-x-2 animate-on-load">
+              <Star className="h-5 w-5 text-ay-gold animate-pulse" />
               <span className="text-ay-gray font-orbitron">Priority: {urgencyLevel.toUpperCase()}</span>
             </div>
           </div>
 
           <Button 
             onClick={() => setLocation('/')}
-            className="bg-gradient-to-r from-ay-gold to-ay-silver text-ay-black hover:scale-105 transition-transform duration-300 px-8 py-3 rounded-full font-orbitron font-semibold"
+            className="bg-gradient-to-r from-ay-gold to-ay-silver text-ay-black hover:scale-105 transition-transform duration-300 px-8 py-3 rounded-full font-orbitron font-semibold animate-pulse-gold"
           >
             RETURN HOME
           </Button>
@@ -124,8 +140,29 @@ export default function ServiceRequest() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-ay-black to-gray-900 py-12 px-6">
-      <div className="max-w-4xl mx-auto">
+    <div className="min-h-screen bg-gradient-to-b from-ay-black to-gray-900 py-12 px-6 relative overflow-hidden">
+      <ParticleSystem />
+      
+      {/* Confetti Animation */}
+      {showConfetti && (
+        <div className="fixed inset-0 pointer-events-none z-50">
+          {[...Array(50)].map((_, i) => (
+            <div
+              key={i}
+              className="absolute animate-confetti"
+              style={{
+                left: `${Math.random() * 100}%`,
+                animationDelay: `${Math.random() * 3}s`,
+                animationDuration: `${3 + Math.random() * 2}s`
+              }}
+            >
+              <div className={`w-2 h-2 ${Math.random() > 0.5 ? 'bg-ay-gold' : 'bg-ay-silver'} rounded-full`} />
+            </div>
+          ))}
+        </div>
+      )}
+      
+      <div className="max-w-4xl mx-auto relative z-10">
         {/* Header */}
         <div className="mb-12 text-center animate-on-load">
           <Button 
@@ -293,12 +330,17 @@ export default function ServiceRequest() {
               <Button 
                 type="submit"
                 disabled={submitMutation.isPending}
-                className="w-full bg-gradient-to-r from-ay-gold to-ay-silver text-ay-black hover:scale-105 transition-transform duration-300 py-3 rounded-full font-orbitron font-semibold"
+                className="w-full bg-gradient-to-r from-ay-gold to-ay-silver text-ay-black hover:scale-105 transition-transform duration-300 py-3 rounded-full font-orbitron font-semibold relative overflow-hidden"
               >
                 {submitMutation.isPending ? (
                   <div className="flex items-center justify-center space-x-2">
                     <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-ay-black"></div>
                     <span>SUBMITTING...</span>
+                  </div>
+                ) : showConfetti ? (
+                  <div className="flex items-center justify-center space-x-2">
+                    <Trophy className="h-5 w-5 animate-bounce" />
+                    <span>SUCCESS!</span>
                   </div>
                 ) : (
                   <div className="flex items-center justify-center space-x-2">

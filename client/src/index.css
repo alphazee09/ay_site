@@ -270,6 +270,62 @@
   border: 1px solid rgba(208, 165, 25, 0.2);
 }
 
+@keyframes confetti {
+  0% {
+    transform: translateY(-100vh) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+.animate-confetti {
+  animation: confetti 3s linear forwards;
+}
+
+@keyframes success-pulse {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(208, 165, 25, 0.7);
+  }
+  70% {
+    transform: scale(1.05);
+    box-shadow: 0 0 0 10px rgba(208, 165, 25, 0);
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(208, 165, 25, 0);
+  }
+}
+
+.animate-success-pulse {
+  animation: success-pulse 2s ease-in-out infinite;
+}
+
+@keyframes celebration {
+  0% {
+    transform: scale(1) rotate(0deg);
+  }
+  25% {
+    transform: scale(1.2) rotate(5deg);
+  }
+  50% {
+    transform: scale(1.1) rotate(-3deg);
+  }
+  75% {
+    transform: scale(1.15) rotate(2deg);
+  }
+  100% {
+    transform: scale(1) rotate(0deg);
+  }
+}
+
+.animate-celebration {
+  animation: celebration 0.8s ease-in-out;
+}
+
 @keyframes particle {
   0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
   10% { opacity: 1; }
