@@ -4,7 +4,9 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { MapPin, Mail, Phone } from "lucide-react";
 import Globe from "./globe";
+import FuturisticSpinner from "./futuristic-spinner";
 import { useToast } from "@/hooks/use-toast";
+import omanVideo from "@assets/oman_1752449292357.mp4";
 
 export default function ContactSection() {
   const [formData, setFormData] = useState({
@@ -56,7 +58,7 @@ export default function ContactSection() {
           <h2 className="text-5xl font-orbitron font-bold mb-6 text-ay-gold">
             CONNECT WITH US
           </h2>
-          <p className="text-xl text-ay-gray max-w-3xl mx-auto">
+          <p className="text-xl text-ay-gray max-w-3xl mx-auto font-orbitron">
             Ready to embark on a journey to the future? Let's create something extraordinary together.
           </p>
         </div>
@@ -120,9 +122,10 @@ export default function ContactSection() {
               <Button 
                 type="submit" 
                 disabled={isSubmitting}
-                className="w-full bg-gradient-to-r from-ay-gold to-cyber-purple text-ay-black py-3 rounded-lg font-orbitron font-semibold hover:scale-105 transition-transform duration-300"
+                className="w-full bg-gradient-to-r from-ay-gold to-cyber-purple text-ay-black py-3 rounded-lg font-orbitron font-semibold hover:scale-105 transition-transform duration-300 flex items-center justify-center space-x-2"
               >
-                {isSubmitting ? 'TRANSMITTING...' : 'TRANSMIT MESSAGE'}
+                {isSubmitting && <FuturisticSpinner size="sm" />}
+                <span>{isSubmitting ? 'TRANSMITTING...' : 'TRANSMIT MESSAGE'}</span>
               </Button>
             </form>
           </div>
@@ -133,9 +136,25 @@ export default function ContactSection() {
               LOCATE US
             </h3>
             
-            {/* 3D Globe */}
+            {/* Oman Video */}
             <div className="mb-8">
-              <Globe />
+              <div className="relative w-full h-64 rounded-lg overflow-hidden">
+                <video 
+                  src={omanVideo}
+                  autoPlay 
+                  loop 
+                  muted 
+                  className="w-full h-full object-cover"
+                  style={{ filter: 'brightness(0.8) contrast(1.2)' }}
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-ay-black via-transparent to-transparent opacity-60" />
+                <div className="absolute bottom-4 left-4 text-ay-gold font-orbitron font-semibold">
+                  🇴🇲 OMAN - MUSCAT
+                </div>
+                <div className="absolute top-4 right-4 w-3 h-3 bg-ay-gold rounded-full animate-pulse">
+                  <div className="absolute -top-1 -left-1 w-5 h-5 bg-ay-gold rounded-full opacity-50 animate-ping" />
+                </div>
+              </div>
             </div>
             
             {/* Contact Details */}

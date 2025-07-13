@@ -7,11 +7,27 @@ export default function Footer() {
       <div className="container mx-auto px-6">
         <div className="text-center">
           <div className="mb-6">
-            <img 
-              src={ayLogo} 
-              alt="AY Group Logo" 
-              className="h-16 w-auto mx-auto mb-4" 
-            />
+            <div className="relative mx-auto w-20 h-20 mb-4">
+              <div className="w-full h-full rounded-full bg-gradient-to-br from-ay-gold to-cyber-purple p-0.5 animate-pulse">
+                <div className="w-full h-full rounded-full bg-ay-black flex items-center justify-center">
+                  <img 
+                    src={ayLogo} 
+                    alt="AY Group Logo" 
+                    className="h-12 w-auto" 
+                  />
+                </div>
+              </div>
+              {/* Neon moving border */}
+              <div className="absolute inset-0 rounded-full border-2 border-transparent animate-spin" 
+                   style={{ 
+                     background: 'linear-gradient(45deg, var(--ay-gold), var(--cyber-purple), var(--electric-aqua), var(--ay-gold))',
+                     backgroundSize: '200% 200%',
+                     animation: 'spin 2s linear infinite, neon-border 3s ease-in-out infinite',
+                     WebkitMask: 'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)',
+                     WebkitMaskComposite: 'xor',
+                     maskComposite: 'exclude'
+                   }} />
+            </div>
             <p className="text-ay-gold font-orbitron font-semibold text-2xl">
               AY GROUP FOR INVESTMENTS
             </p>
@@ -33,7 +49,7 @@ export default function Footer() {
             </span>
           </div>
           
-          <div className="text-ay-gray text-sm">
+          <div className="text-ay-gray text-sm font-orbitron">
             <p>&copy; 2024 AY Group For Investments. All rights reserved.</p>
             <p className="mt-2">Designing the future, one solution at a time.</p>
           </div>

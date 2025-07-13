@@ -6,7 +6,7 @@ const services = [
   {
     id: 1,
     title: "AY BUSINESS CENTER",
-    description: "Holographic office visualization and advanced business solutions for the modern enterprise",
+    description: "Providing top-tier office spaces, meeting rooms, and business solutions for startups and established companies.",
     icon: Building,
     color: "ay-gold",
     buttonText: "EXPLORE",
@@ -15,7 +15,7 @@ const services = [
   {
     id: 2,
     title: "AY SOFTLABS",
-    description: "Matrix-style coding interface animations and cutting-edge software development solutions",
+    description: "Specializing in technology solutions, including web and mobile app development, ERP systems, CRM platforms, AI integration, cybersecurity",
     icon: Code,
     color: "cyber-purple",
     buttonText: "DEVELOP",
@@ -24,7 +24,7 @@ const services = [
   {
     id: 3,
     title: "AY TOURISM",
-    description: "Immersive travel destination reveals and innovative tourism experiences",
+    description: "Providing travel and tourism services, including tours, holiday packages, and accommodation bookings to create unforgettable experiences",
     icon: Globe,
     color: "electric-aqua",
     buttonText: "DISCOVER",
@@ -33,7 +33,7 @@ const services = [
   {
     id: 4,
     title: "EVENTS MANAGEMENT",
-    description: "Dynamic event staging with advanced particle systems and memorable experiences",
+    description: "Organizing and managing corporate, social, and large-scale events with precision and creativity.",
     icon: Calendar,
     color: "ay-gold",
     buttonText: "ORCHESTRATE",
@@ -41,21 +41,12 @@ const services = [
   },
   {
     id: 5,
-    title: "FINANCIAL PLANNING",
-    description: "Data flow animations and advanced financial chart visualizations",
+    title: "FINANCIAL PLANNING & ANALYSIS",
+    description: "Delivering professional financial planning, budgeting, and analysis services to help businesses and individuals manage their finances",
     icon: TrendingUp,
     color: "cyber-purple",
     buttonText: "ANALYZE",
     image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=600"
-  },
-  {
-    id: 6,
-    title: "INNOVATION LAB",
-    description: "Cutting-edge research and development for tomorrow's solutions",
-    icon: Rocket,
-    color: "electric-aqua",
-    buttonText: "INNOVATE",
-    image: "https://images.unsplash.com/photo-1518709268805-4e9042af2176?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=600"
   }
 ];
 
@@ -99,7 +90,7 @@ export default function ServicesSection() {
           <h2 className="text-5xl font-orbitron font-bold mb-6 text-ay-gold">
             OUR UNIVERSE
           </h2>
-          <p className="text-xl text-ay-gray max-w-3xl mx-auto">
+          <p className="text-xl text-ay-gray max-w-3xl mx-auto font-orbitron">
             Discover our constellation of services designed to propel your business into the future
           </p>
         </div>

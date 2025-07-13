@@ -8,8 +8,9 @@ export default function ParticleSystem() {
 
     const container = containerRef.current;
     const particleCount = 50;
+    const matrixCount = 20;
 
-    // Create particles
+    // Create regular particles
     for (let i = 0; i < particleCount; i++) {
       const particle = document.createElement('div');
       particle.className = 'particle';
@@ -17,6 +18,26 @@ export default function ParticleSystem() {
       particle.style.animationDelay = Math.random() * 8 + 's';
       particle.style.animationDuration = (Math.random() * 3 + 5) + 's';
       container.appendChild(particle);
+    }
+
+    // Create matrix-style data streams
+    for (let i = 0; i < matrixCount; i++) {
+      const stream = document.createElement('div');
+      stream.className = 'fixed w-px h-20 bg-gradient-to-b from-transparent via-ay-gold to-transparent animate-matrix-rain';
+      stream.style.left = Math.random() * 100 + '%';
+      stream.style.animationDelay = Math.random() * 3 + 's';
+      stream.style.animationDuration = (Math.random() * 2 + 3) + 's';
+      container.appendChild(stream);
+    }
+
+    // Create data flow lines
+    for (let i = 0; i < 10; i++) {
+      const dataFlow = document.createElement('div');
+      dataFlow.className = 'fixed w-32 h-px bg-gradient-to-r from-transparent via-cyber-purple to-transparent animate-data-flow';
+      dataFlow.style.top = Math.random() * 100 + '%';
+      dataFlow.style.animationDelay = Math.random() * 4 + 's';
+      dataFlow.style.animationDuration = (Math.random() * 2 + 2) + 's';
+      container.appendChild(dataFlow);
     }
 
     // Mouse movement parallax effect

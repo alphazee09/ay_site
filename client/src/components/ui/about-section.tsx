@@ -40,7 +40,7 @@ export default function AboutSection() {
           <h2 className="text-5xl font-orbitron font-bold mb-6 text-ay-gold">
             ABOUT AY GROUP
           </h2>
-          <p className="text-xl text-ay-gray max-w-4xl mx-auto leading-relaxed">
+          <p className="text-xl text-ay-gray max-w-4xl mx-auto leading-relaxed font-orbitron">
             We are a constellation of <span className="text-ay-gold">powerful</span>,{" "}
             <span className="text-cyber-purple">experienced</span>, and{" "}
             <span className="text-electric-aqua">creative</span> professionals,
@@ -56,7 +56,7 @@ export default function AboutSection() {
             <h3 className="text-xl font-orbitron font-semibold mb-2 text-ay-silver">
               FUTURE READY
             </h3>
-            <p className="text-ay-gray">
+            <p className="text-ay-gray font-orbitron">
               Designing solutions for tomorrow's challenges
             </p>
           </div>
@@ -68,7 +68,7 @@ export default function AboutSection() {
             <h3 className="text-xl font-orbitron font-semibold mb-2 text-ay-silver">
               LIMITLESS
             </h3>
-            <p className="text-ay-gray">
+            <p className="text-ay-gray font-orbitron">
               Boundless creativity and innovation
             </p>
           </div>
@@ -80,7 +80,7 @@ export default function AboutSection() {
             <h3 className="text-xl font-orbitron font-semibold mb-2 text-ay-silver">
               POWERED
             </h3>
-            <p className="text-ay-gray">
+            <p className="text-ay-gray font-orbitron">
               Energized by expertise and passion
             </p>
           </div>

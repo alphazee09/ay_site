@@ -13,7 +13,23 @@ export default function Navigation() {
         <div className="flex items-center justify-between">
           {/* Logo */}
           <div className="flex items-center space-x-4">
-            <img src={ayLogo} alt="AY Group Logo" className="h-10 w-auto" />
+            <div className="relative">
+              <div className="w-12 h-12 rounded-full bg-gradient-to-br from-ay-gold to-cyber-purple p-0.5 animate-pulse">
+                <div className="w-full h-full rounded-full bg-ay-black flex items-center justify-center">
+                  <img src={ayLogo} alt="AY Group Logo" className="h-8 w-auto" />
+                </div>
+              </div>
+              {/* Neon moving border */}
+              <div className="absolute inset-0 rounded-full border-2 border-transparent animate-spin" 
+                   style={{ 
+                     background: 'linear-gradient(45deg, var(--ay-gold), var(--cyber-purple), var(--electric-aqua), var(--ay-gold))',
+                     backgroundSize: '200% 200%',
+                     animation: 'spin 2s linear infinite, neon-border 3s ease-in-out infinite',
+                     WebkitMask: 'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)',
+                     WebkitMaskComposite: 'xor',
+                     maskComposite: 'exclude'
+                   }} />
+            </div>
             <div className="text-ay-gold font-orbitron font-bold text-xl tracking-wider">
               AY GROUP
             </div>
