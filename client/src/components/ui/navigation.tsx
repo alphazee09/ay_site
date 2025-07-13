@@ -14,7 +14,7 @@ export default function Navigation() {
           {/* Logo */}
           <div className="flex items-center space-x-4">
             <div className="relative">
-              <div className="w-12 h-12 rounded-full bg-gradient-to-br from-ay-gold to-cyber-purple p-0.5 animate-pulse">
+              <div className="w-12 h-12 rounded-full bg-gradient-to-br from-ay-gold to-ay-gray p-0.5 animate-pulse">
                 <div className="w-full h-full rounded-full bg-ay-black flex items-center justify-center">
                   <img src={ayLogo} alt="AY Group Logo" className="h-8 w-auto" />
                 </div>
@@ -22,7 +22,7 @@ export default function Navigation() {
               {/* Neon moving border */}
               <div className="absolute inset-0 rounded-full border-2 border-transparent animate-spin" 
                    style={{ 
-                     background: 'linear-gradient(45deg, var(--ay-gold), var(--cyber-purple), var(--electric-aqua), var(--ay-gold))',
+                     background: 'linear-gradient(45deg, var(--ay-gold), var(--ay-silver), var(--ay-gray), var(--ay-gold))',
                      backgroundSize: '200% 200%',
                      animation: 'spin 2s linear infinite, neon-border 3s ease-in-out infinite',
                      WebkitMask: 'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)',

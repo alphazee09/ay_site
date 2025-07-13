@@ -26,16 +26,16 @@ export default function ServiceCard({
           bg: 'bg-ay-gold',
           textOnBg: 'text-ay-black'
         };
-      case 'cyber-purple':
+      case 'ay-gray':
         return {
-          text: 'text-cyber-purple',
-          bg: 'bg-cyber-purple',
+          text: 'text-ay-gray',
+          bg: 'bg-ay-gray',
           textOnBg: 'text-white'
         };
-      case 'electric-aqua':
+      case 'ay-silver':
         return {
-          text: 'text-electric-aqua',
-          bg: 'bg-electric-aqua',
+          text: 'text-ay-silver',
+          bg: 'bg-ay-silver',
           textOnBg: 'text-ay-black'
         };
       default:

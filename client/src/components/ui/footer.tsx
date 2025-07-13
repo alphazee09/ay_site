@@ -8,7 +8,7 @@ export default function Footer() {
         <div className="text-center">
           <div className="mb-6">
             <div className="relative mx-auto w-20 h-20 mb-4">
-              <div className="w-full h-full rounded-full bg-gradient-to-br from-ay-gold to-cyber-purple p-0.5 animate-pulse">
+              <div className="w-full h-full rounded-full bg-gradient-to-br from-ay-gold to-ay-gray p-0.5 animate-pulse">
                 <div className="w-full h-full rounded-full bg-ay-black flex items-center justify-center">
                   <img 
                     src={ayLogo} 
@@ -20,7 +20,7 @@ export default function Footer() {
               {/* Neon moving border */}
               <div className="absolute inset-0 rounded-full border-2 border-transparent animate-spin" 
                    style={{ 
-                     background: 'linear-gradient(45deg, var(--ay-gold), var(--cyber-purple), var(--electric-aqua), var(--ay-gold))',
+                     background: 'linear-gradient(45deg, var(--ay-gold), var(--ay-silver), var(--ay-gray), var(--ay-gold))',
                      backgroundSize: '200% 200%',
                      animation: 'spin 2s linear infinite, neon-border 3s ease-in-out infinite',
                      WebkitMask: 'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)',
@@ -44,7 +44,7 @@ export default function Footer() {
               alt="AY Soft Logo" 
               className="h-8 w-auto" 
             />
-            <span className="text-cyber-purple font-orbitron font-semibold">
+            <span className="text-ay-silver font-orbitron font-semibold">
               AY SOFT
             </span>
           </div>

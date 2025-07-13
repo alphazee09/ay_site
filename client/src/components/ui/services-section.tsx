@@ -17,7 +17,7 @@ const services = [
     title: "AY SOFTLABS",
     description: "Specializing in technology solutions, including web and mobile app development, ERP systems, CRM platforms, AI integration, cybersecurity",
     icon: Code,
-    color: "cyber-purple",
+    color: "ay-gray",
     buttonText: "DEVELOP",
     image: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=600"
   },
@@ -26,7 +26,7 @@ const services = [
     title: "AY TOURISM",
     description: "Providing travel and tourism services, including tours, holiday packages, and accommodation bookings to create unforgettable experiences",
     icon: Globe,
-    color: "electric-aqua",
+    color: "ay-silver",
     buttonText: "DISCOVER",
     image: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=600"
   },
@@ -44,7 +44,7 @@ const services = [
     title: "FINANCIAL PLANNING & ANALYSIS",
     description: "Delivering professional financial planning, budgeting, and analysis services to help businesses and individuals manage their finances",
     icon: TrendingUp,
-    color: "cyber-purple",
+    color: "ay-gray",
     buttonText: "ANALYZE",
     image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=600"
   }
