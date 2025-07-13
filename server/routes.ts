@@ -2,6 +2,7 @@ import type { Express } from "express";
 import { createServer, type Server } from "http";
 import { storage } from "./storage";
 import { z } from "zod";
+import { insertServiceRequestSchema } from "@shared/schema";
 
 const contactMessageSchema = z.object({
   name: z.string().min(1, "Name is required"),
@@ -53,6 +54,38 @@ export async function registerRoutes(app: Express): Promise<Server> {
         success: false, 
         message: "Failed to fetch contact messages" 
       });
+    }
+  });
+
+  // Service request submission endpoint
+  app.post("/api/service-requests", async (req, res) => {
+    try {
+      const validatedData = insertServiceRequestSchema.parse(req.body);
+      
+      // Store the service request
+      const serviceRequest = await storage.createServiceRequest(validatedData);
+      
+      // In a real application, you would send an email notification here
+      console.log("Service request received:", serviceRequest);
+      
+      res.json({ 
+        success: true, 
+        message: "Service request submitted successfully",
+        id: serviceRequest.id 
+      });
+    } catch (error) {
+      if (error instanceof z.ZodError) {
+        res.status(400).json({ 
+          success: false, 
+          message: "Validation error", 
+          errors: error.errors 
+        });
+      } else {
+        res.status(500).json({ 
+          success: false, 
+          message: "Internal server error" 
+        });
+      }
     }
   });
 

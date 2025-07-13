@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { LucideIcon } from "lucide-react";
+import { useLocation } from "wouter";
 
 interface ServiceCardProps {
   title: string;
@@ -18,6 +19,8 @@ export default function ServiceCard({
   buttonText, 
   image 
 }: ServiceCardProps) {
+  const [, setLocation] = useLocation();
+  
   const getColorClasses = (color: string) => {
     switch (color) {
       case 'ay-gold':
@@ -73,6 +76,7 @@ export default function ServiceCard({
       
       <div className="flex justify-center">
         <Button 
+          onClick={() => setLocation('/service-request')}
           className={`${colors.bg} ${colors.textOnBg} px-6 py-2 rounded-full font-orbitron font-semibold hover:scale-105 transition-transform duration-300`}
         >
           {buttonText}

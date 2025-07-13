@@ -250,12 +250,24 @@
 }
 
 @keyframes glow {
-  0% { text-shadow: 0 0 20px rgba(208, 165, 25, 0.5); }
-  100% { text-shadow: 0 0 40px rgba(208, 165, 25, 1); }
+  0% { 
+    text-shadow: 0 0 10px rgba(208, 165, 25, 0.3);
+    filter: blur(0px);
+  }
+  100% { 
+    text-shadow: 0 0 20px rgba(208, 165, 25, 0.8);
+    filter: blur(0px);
+  }
 }
 
 .animate-text-glow {
   animation: text-glow 2s ease-in-out infinite alternate;
+}
+
+.glass-morphism {
+  background: rgba(4, 4, 4, 0.8);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(208, 165, 25, 0.2);
 }
 
 @keyframes particle {

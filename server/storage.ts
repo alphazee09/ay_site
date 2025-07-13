@@ -1,4 +1,4 @@
-import { users, type User, type InsertUser, type ContactMessage, type InsertContactMessage } from "@shared/schema";
+import { users, type User, type InsertUser, type ContactMessage, type InsertContactMessage, type ServiceRequest, type InsertServiceRequest } from "@shared/schema";
 
 // modify the interface with any CRUD methods
 // you might need
@@ -9,19 +9,25 @@ export interface IStorage {
   createUser(user: InsertUser): Promise<User>;
   createContactMessage(message: InsertContactMessage): Promise<ContactMessage>;
   getAllContactMessages(): Promise<ContactMessage[]>;
+  createServiceRequest(request: InsertServiceRequest): Promise<ServiceRequest>;
+  getAllServiceRequests(): Promise<ServiceRequest[]>;
 }
 
 export class MemStorage implements IStorage {
   private users: Map<number, User>;
   private contactMessages: Map<number, ContactMessage>;
+  private serviceRequests: Map<number, ServiceRequest>;
   private currentId: number;
   private currentContactId: number;
+  private currentServiceRequestId: number;
 
   constructor() {
     this.users = new Map();
     this.contactMessages = new Map();
+    this.serviceRequests = new Map();
     this.currentId = 1;
     this.currentContactId = 1;
+    this.currentServiceRequestId = 1;
   }
 
   async getUser(id: number): Promise<User | undefined> {
@@ -54,6 +60,22 @@ export class MemStorage implements IStorage {
 
   async getAllContactMessages(): Promise<ContactMessage[]> {
     return Array.from(this.contactMessages.values());
+  }
+
+  async createServiceRequest(insertRequest: InsertServiceRequest): Promise<ServiceRequest> {
+    const id = this.currentServiceRequestId++;
+    const request: ServiceRequest = { 
+      ...insertRequest, 
+      id,
+      createdAt: new Date(),
+      company: insertRequest.company || null
+    };
+    this.serviceRequests.set(id, request);
+    return request;
+  }
+
+  async getAllServiceRequests(): Promise<ServiceRequest[]> {
+    return Array.from(this.serviceRequests.values());
   }
 }
 

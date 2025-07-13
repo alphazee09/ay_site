@@ -27,7 +27,26 @@ export const insertContactMessageSchema = createInsertSchema(contactMessages).om
   createdAt: true,
 });
 
+export const serviceRequests = pgTable("service_requests", {
+  id: serial("id").primaryKey(),
+  name: text("name").notNull(),
+  email: text("email").notNull(),
+  phone: text("phone").notNull(),
+  company: text("company"),
+  service: text("service").notNull(),
+  message: text("message").notNull(),
+  urgency: text("urgency").notNull(),
+  createdAt: timestamp("created_at").defaultNow(),
+});
+
+export const insertServiceRequestSchema = createInsertSchema(serviceRequests).omit({
+  id: true,
+  createdAt: true,
+});
+
 export type InsertUser = z.infer<typeof insertUserSchema>;
 export type User = typeof users.$inferSelect;
 export type InsertContactMessage = z.infer<typeof insertContactMessageSchema>;
 export type ContactMessage = typeof contactMessages.$inferSelect;
+export type InsertServiceRequest = z.infer<typeof insertServiceRequestSchema>;
+export type ServiceRequest = typeof serviceRequests.$inferSelect;
