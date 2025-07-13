@@ -58,7 +58,7 @@ export default function HeroSection() {
           </div>
         </div>
         
-        <h1 className="text-6xl md:text-8xl font-orbitron font-black mb-6 hero-text animate-glow animate-on-load">
+        <h1 className="text-6xl md:text-8xl font-orbitron font-black mb-6 hero-text animate-glow animate-on-load" style={{ fontFamily: "'Orbitron', monospace" }}>
           ALWAYS YOU
         </h1>
         
