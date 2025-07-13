@@ -60,12 +60,10 @@ export default function ServiceCard({
           />
           <div className="absolute inset-0 bg-gradient-to-t from-ay-black via-transparent to-transparent rounded-xl opacity-60" />
         </div>
-        <div className="animate-cyber-pulse">
-          <Icon className={`h-12 w-12 mx-auto mb-4 ${colors.text}`} />
-        </div>
+        <Icon className={`h-12 w-12 mx-auto mb-4 ${colors.text}`} />
       </div>
       
-      <h3 className={`text-2xl font-orbitron font-semibold mb-4 ${colors.text}`}>
+      <h3 className={`text-2xl font-orbitron font-semibold mb-4 ${colors.text} animate-glow`}>
         {title}
       </h3>
       

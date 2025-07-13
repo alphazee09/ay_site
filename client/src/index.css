@@ -254,6 +254,10 @@
   100% { text-shadow: 0 0 40px rgba(208, 165, 25, 1); }
 }
 
+.animate-text-glow {
+  animation: text-glow 2s ease-in-out infinite alternate;
+}
+
 @keyframes particle {
   0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
   10% { opacity: 1; }
@@ -321,6 +325,15 @@
   50% { 
     box-shadow: 0 0 40px rgba(208, 165, 25, 0.8), 0 0 60px rgba(155, 93, 229, 0.4);
     transform: scale(1.05);
+  }
+}
+
+@keyframes text-glow {
+  0%, 100% { 
+    text-shadow: 0 0 10px rgba(208, 165, 25, 0.5);
+  }
+  50% { 
+    text-shadow: 0 0 20px rgba(208, 165, 25, 1), 0 0 30px rgba(155, 93, 229, 0.5);
   }
 }
 
