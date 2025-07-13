@@ -54,6 +54,7 @@ export default function ServiceRequest() {
   const [selectedService, setSelectedService] = useState<string>("");
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [showConfetti, setShowConfetti] = useState(false);
+  const [showError, setShowError] = useState(false);
   const { toast } = useToast();
 
   const { register, handleSubmit, formState: { errors }, setValue, watch } = useForm<ServiceRequestForm>({
@@ -81,9 +82,11 @@ export default function ServiceRequest() {
       }, 1000);
     },
     onError: () => {
+      setShowError(true);
+      setTimeout(() => setShowError(false), 3000);
       toast({
-        title: "Error",
-        description: "Failed to submit request. Please try again.",
+        title: "Transmission Failed",
+        description: "Unable to establish connection. Please retry.",
         variant: "destructive"
       });
     }
@@ -162,6 +165,26 @@ export default function ServiceRequest() {
         </div>
       )}
       
+      {/* Error Animation */}
+      {showError && (
+        <div className="fixed inset-0 pointer-events-none z-50">
+          <div className="absolute inset-0 bg-red-500 opacity-10 animate-pulse" />
+          {[...Array(20)].map((_, i) => (
+            <div
+              key={i}
+              className="absolute animate-error-spark"
+              style={{
+                left: `${Math.random() * 100}%`,
+                top: `${Math.random() * 100}%`,
+                animationDelay: `${Math.random() * 2}s`
+              }}
+            >
+              <div className="w-1 h-1 bg-red-500 rounded-full animate-ping" />
+            </div>
+          ))}
+        </div>
+      )}
+      
       <div className="max-w-4xl mx-auto relative z-10">
         {/* Header */}
         <div className="mb-12 text-center animate-on-load">
@@ -198,16 +221,29 @@ export default function ServiceRequest() {
                     setSelectedService(service.id);
                     setValue("service", service.id);
                   }}
-                  className={`p-4 rounded-xl border-2 cursor-pointer transition-all duration-300 hover:scale-105 ${
+                  className={`p-4 rounded-xl border-2 cursor-pointer transition-all duration-300 hover:scale-105 relative overflow-hidden ${
                     selectedService === service.id 
-                      ? 'border-ay-gold bg-ay-gold bg-opacity-10' 
+                      ? 'border-ay-gold bg-ay-gold bg-opacity-10 animate-selected-glow' 
                       : 'border-ay-gray border-opacity-30 hover:border-ay-silver'
                   }`}
+                  style={{
+                    backdropFilter: selectedService === service.id ? 'blur(10px)' : 'blur(0px)',
+                    background: selectedService === service.id 
+                      ? 'linear-gradient(135deg, rgba(208, 165, 25, 0.2), rgba(208, 165, 25, 0.05))'
+                      : 'transparent'
+                  }}
                 >
-                  <h3 className="font-orbitron font-semibold text-ay-silver mb-1">
+                  {selectedService === service.id && (
+                    <div className="absolute inset-0 bg-gradient-to-r from-ay-gold to-transparent opacity-20 animate-shimmer" />
+                  )}
+                  <h3 className={`font-orbitron font-semibold mb-1 relative z-10 ${
+                    selectedService === service.id ? 'text-ay-gold animate-glow' : 'text-ay-silver'
+                  }`}>
                     {service.name}
                   </h3>
-                  <p className="text-sm text-ay-gray font-orbitron">
+                  <p className={`text-sm font-orbitron relative z-10 ${
+                    selectedService === service.id ? 'text-ay-silver' : 'text-ay-gray'
+                  }`}>
                     {service.description}
                   </p>
                 </div>
@@ -341,6 +377,11 @@ export default function ServiceRequest() {
                   <div className="flex items-center justify-center space-x-2">
                     <Trophy className="h-5 w-5 animate-bounce" />
                     <span>SUCCESS!</span>
+                  </div>
+                ) : showError ? (
+                  <div className="flex items-center justify-center space-x-2">
+                    <Zap className="h-5 w-5 animate-bounce text-red-500" />
+                    <span>FAILED - RETRY</span>
                   </div>
                 ) : (
                   <div className="flex items-center justify-center space-x-2">
