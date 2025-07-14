@@ -186,23 +186,29 @@ export default function ServiceRequest() {
       )}
       
       <div className="max-w-4xl mx-auto relative z-10">
-        {/* Header */}
-        <div className="mb-12 text-center animate-on-load">
-          <Button 
-            variant="ghost" 
-            onClick={() => setLocation('/')}
-            className="absolute top-8 left-8 text-ay-gold hover:text-ay-silver transition-colors"
-          >
-            <ArrowLeft className="h-5 w-5 mr-2" />
-            Back to Home
-          </Button>
+        {/* Header with Back Button */}
+        <div className="mb-12 animate-on-load">
+          {/* Back Button - positioned top left */}
+          <div className="flex justify-start mb-8">
+            <Button 
+              onClick={() => setLocation('/')}
+              variant="outline" 
+              className="border-ay-gold text-ay-gold hover:bg-ay-gold hover:text-ay-black font-orbitron transition-all duration-300 hover:scale-105"
+            >
+              <ArrowLeft className="h-5 w-5 mr-2" />
+              Back to Home
+            </Button>
+          </div>
           
-          <h1 className="text-5xl md:text-7xl font-orbitron font-black text-ay-gold mb-6 animate-glow">
-            SERVICE REQUEST
-          </h1>
-          <p className="text-xl text-ay-gray font-orbitron max-w-2xl mx-auto">
-            Ready to transform your vision into reality? Let's discuss your needs.
-          </p>
+          {/* Title Section - centered */}
+          <div className="text-center">
+            <h1 className="text-5xl md:text-7xl font-orbitron font-black text-ay-gold mb-6 animate-glow">
+              SERVICE REQUEST
+            </h1>
+            <p className="text-xl text-ay-gray font-orbitron max-w-2xl mx-auto">
+              Ready to transform your vision into reality? Let's discuss your needs.
+            </p>
+          </div>
         </div>
 
         <div className="grid md:grid-cols-2 gap-8">
