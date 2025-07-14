@@ -188,8 +188,8 @@ export default function ServiceRequest() {
       <div className="max-w-4xl mx-auto relative z-10">
         {/* Header with Back Button */}
         <div className="mb-12 animate-on-load">
-          {/* Back Button - positioned top left */}
-          <div className="flex justify-start mb-8">
+          {/* Back Button - positioned top left with more spacing */}
+          <div className="flex justify-start mb-12 pt-6">
             <Button 
               onClick={() => setLocation('/')}
               variant="outline" 
