@@ -1,49 +1,41 @@
-import { useEffect } from "react";
-import Navigation from "@/components/ui/navigation";
-import HeroSection from "@/components/ui/hero-section";
-import ServicesSection from "@/components/ui/services-section";
-import AboutSection from "@/components/ui/about-section";
-import ContactSection from "@/components/ui/contact-section";
-import Footer from "@/components/ui/footer";
-import ParticleSystem from "@/components/ui/particle-system";
+import { useEffect } from 'react';
+import { Header } from '@/components/Header';
+import { Hero } from '@/components/Hero';
+import { AboutSection } from '@/components/AboutSection';
+import { StrategySection } from '@/components/StrategySection';
+import { BusinessSectorsSection } from '@/components/BusinessSectorsSection';
+import { ProjectsSection } from '@/components/ProjectsSection';
+import { ClientsSection } from '@/components/ClientsSection';
+import { ContactSection } from '@/components/ContactSection';
+import { Footer } from '@/components/Footer';
+import { useLanguage } from '@/hooks/useLanguage';
 
 export default function Home() {
+  const { language } = useLanguage();
+
   useEffect(() => {
-    // Smooth scrolling for anchor links
-    const handleAnchorClick = (e: Event) => {
-      const target = e.target as HTMLAnchorElement;
-      if (target.hash) {
-        e.preventDefault();
-        const element = document.querySelector(target.hash);
-        if (element) {
-          element.scrollIntoView({ behavior: 'smooth' });
-        }
-      }
-    };
-
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', handleAnchorClick);
-    });
-
-    return () => {
-      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.removeEventListener('click', handleAnchorClick);
-      });
-    };
-  }, []);
+    // Set document direction based on language
+    if (language === 'ar') {
+      document.documentElement.dir = 'rtl';
+      document.documentElement.lang = 'ar';
+    } else {
+      document.documentElement.dir = 'ltr';
+      document.documentElement.lang = 'en';
+    }
+  }, [language]);
 
   return (
-    <div className="min-h-screen bg-ay-black text-ay-silver overflow-x-hidden">
-      <ParticleSystem />
-      
-      {/* Cyber Grid Background */}
-      <div className="fixed inset-0 cyber-grid opacity-20 pointer-events-none z-0" />
-      
-      <Navigation />
-      <HeroSection />
-      <ServicesSection />
-      <AboutSection />
-      <ContactSection />
+    <div className="min-h-screen">
+      <Header />
+      <main>
+        <Hero />
+        <AboutSection />
+        <StrategySection />
+        <BusinessSectorsSection />
+        <ProjectsSection />
+        <ClientsSection />
+        <ContactSection />
+      </main>
       <Footer />
     </div>
   );
